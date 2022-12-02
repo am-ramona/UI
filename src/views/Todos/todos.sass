@@ -1,0 +1,105 @@
+@import '../../App'
+
+#todoList 
+    width: 440px
+    height: 437px
+    display: grid
+    grid-template-areas: "a a a a" "b b b b" "c c c c" "d d d d" "e e e e"
+    grid-template-rows: 44px 67px 70px 1fr 21px
+    grid-template-columns: 150px 1fr
+    
+    .title 
+        grid-area: b
+        font-size: 22px
+        font-weight: bold
+        line-height: normal
+        letter-spacing: normal
+        color: $mainColor
+
+    .newItem 
+        grid-area: c
+
+        input 
+            @extend %input
+            color: $inputColor
+            font-size: 16px
+            line-height: 42px
+            border-left: 0
+            border-right: 0
+            border-top: 0
+            border-bottom: solid 1px $silver
+            width: 100%
+            font-family: MarkPro
+            
+            &:focus-visible
+               outline: 0
+
+    .itemsList 
+        grid-area: d
+        overflow: auto
+
+        /* styling scrollbar for firefox */
+        scrollbar-width: thin
+        scrollbar-color: $inputColor
+
+        &:-webkit-scrollbar 
+            width: 5px
+
+        &:-webkit-scrollbar-track 
+            background: transparent
+
+        &:-webkit-scrollbar-thumb 
+            width: 5px
+            background-color: $silver
+            border-radius: 6px
+            border: 3px solid transparent
+
+        /* styling scrollbar for webkit browsers */
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb 
+            width:5px
+            background-color: $silver  
+            color: $inputColor  
+
+        &::-webkit-scrollbar-thumb 
+            background-color: $mainColor     
+            box-shadow: inset 0 0 0 10px
+
+    .filteringOptions 
+        grid-area: e
+
+        .tag 
+            color: $tagColor
+            font-size: 14px
+            font-weight: 500
+            line-height: normal
+            letter-spacing: normal
+
+            &:after 
+                content: ":"
+            
+        .options            
+            button, a 
+                font-family: 'MarkPro'
+                font-size: 14px
+                font-weight: 300
+                line-height: normal
+                text-decoration: underline
+                border: 0
+                color: $inactive
+                background-color: $mainBackgroundColor
+                text-transform: capitalize
+                cursor: pointer
+
+                &.all
+                    padding-left: 19px
+                
+                &.completed
+                    padding-left: 12px
+
+                &.incompleted
+                    padding-left: 16px
+
+                &.active
+                    color: $mainColor
+                    text-decoration: none
